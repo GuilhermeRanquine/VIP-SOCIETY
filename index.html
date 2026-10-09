@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html class="scroll-smooth bg-[#060606] text-[#F4F4F2]" lang="pt-BR" style="">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>VIP SOCIETY - Curadoria Editorial Privada</title>
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Inter:wght@200;300;400;500;600&amp;display=swap"
+    rel="stylesheet">
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#070707',
+            surface: '#0E0E0E',
+            hairline: '#1E1E1E',
+            hairlineLight: '#2A2A2A',
+            offwhite: '#F4F4F2',
+            subtle: '#8E8E93',
+            muted: '#5A5A5F'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Didot', 'Bodoni MT', 'serif'],
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          },
+          letterSpacing: {
+            widest: '.22em',
+            monumental: '.35em',
+            tightest: '-0.035em'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- BEGIN: Custom Stylesheet Definition -->
+  <style data-purpose="typography-and-effects">
+    body {
+      background-color: #070707;
+      color: #F4F4F2;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: #F4F4F2;
+      color: #070707;
+    }
+
+    /* Totême-like high contrast hairline borders */
+    .hairline-b {
+      border-bottom: 1px solid #1C1C1C;
+    }
+
+    .hairline-t {
+      border-top: 1px solid #1C1C1C;
+    }
+
+    .hairline-r {
+      border-right: 1px solid #1C1C1C;
+    }
+
+    .hairline-l {
+      border-left: 1px solid #1C1C1C;
+    }
+
+    .hairline-all {
+      border: 1px solid #1C1C1C;
+    }
+
+    /* Fluid typography for dramatic monumental hero headline */
+    .headline-monumental {
+      font-size: clamp(3.2rem, 11.5vw, 12.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+    }
+
+    /* Subtle pulse on status dot */
+    @keyframes pulse-subtle {
+
+      0%,
+      100% {
+        opacity: 0.35;
+        transform: scale(0.95);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    .status-pulse {
+      animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Smooth luxury button hover */
+    .luxury-btn {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .luxury-btn:hover {
+      background-color: transparent;
+      color: #F4F4F2;
+      box-shadow: inset 0 0 0 1px #F4F4F2;
+    }
+
+    .luxury-btn-invert {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .luxury-btn-invert:hover {
+      background-color: #F4F4F2;
+      color: #070707;
+      border-color: #F4F4F2;
+    }
+
+    /* Image zoom on card hover */
+    .editorial-card img {
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    }
+
+    .editorial-card:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%) contrast(105%);
+    }
+  </style>
+  <!-- END: Custom Stylesheet Definition -->
+</head>
+
+<body
+  class="bg-[#070707] text-[#F4F4F2] min-h-screen flex flex-col justify-between selection:bg-[#F4F4F2] selection:text-[#070707]">
+  <!-- BEGIN: MainHeader -->
+  <header class="sticky top-0 z-50 bg-[#070707]/90 backdrop-blur-md hairline-b transition-colors duration-300"
+    data-purpose="site-header">
+    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 h-20 sm:h-24 flex items-center justify-between">
+      <!-- Brand Logo in High-End Editorial Style -->
+      <a class="flex flex-col group" data-purpose="brand-logo" href="#">
+        <span
+          class="font-serif text-xl sm:text-2xl tracking-[0.28em] font-normal uppercase text-[#F4F4F2] transition-opacity group-hover:opacity-80">
+          VIP SOCIETY
+        </span>
+        <span class="text-[9px] tracking-[0.4em] text-[#8E8E93] uppercase font-sans mt-0.5">
+          Curadoria Privada
+        </span>
+      </a>
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-12" data-purpose="primary-navigation">
+        <a class="text-xs uppercase tracking-[0.25em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
+          href="#conceito">
+          O Conceito
+        </a>
+        <a class="text-xs uppercase tracking-[0.25em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
+          href="#curadoria">
+          Curadoria
+        </a>
+        <a class="text-xs uppercase tracking-[0.25em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
+          href="#pilares">
+          Estrutura
+        </a>
+      </nav>
+      <!-- Status Tag Badge & Direct Action Link -->
+      <div class="flex items-center space-x-4 sm:space-x-6" data-purpose="header-status-badge">
+        <div
+          class="hidden xl:flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#8E8E93] border border-[#1E1E1E] px-3.5 py-1.5 rounded-[1px] uppercase bg-[#0B0B0B]">
+          <span class="w-1.5 h-1.5 rounded-full bg-stone-300 status-pulse"></span>
+          <span class="">Acesso Privado • Temporada 2026</span>
+        </div>
+        <a class="text-xs uppercase tracking-[0.2em] px-4 py-2 text-[#F4F4F2] border border-[#2E2E2E] hover:border-[#F4F4F2] transition-colors"
+          href="#convite">
+          Solicitar Acesso
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- END: MainHeader -->
+  <!-- BEGIN: MainContent -->
+  <main class="flex-grow">
+    <!-- BEGIN: HeroSection -->
+    <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-32 lg:pt-24 lg:pb-36 hairline-b overflow-hidden"
+      data-purpose="hero-editorial">
+      <!-- Ambient Visual Watermark in totême style -->
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        <!-- Metadata Header line -->
+        <div
+          class="flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12 text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-[#8E8E93]">
+          <div class="">[ VOLUME 01 — EDIÇÃO PRIVADA ]</div>
+          <div class="hidden sm:block">rio de janeiro • new york • SÃO PAULO</div>
+          <div class="">MEMBROS SELECIONADOS</div>
+        </div>
+        <!-- Monumental Hero Typographic Layout -->
+        <div class="relative my-6 sm:my-10">
+          <h1 class="headline-monumental font-serif font-light text-[#F4F4F2] uppercase select-none">
+            <span class="block tracking-[-0.02em]">CURADORIA</span>
+            <span class="flex items-baseline justify-between flex-wrap">
+              <span class="italic font-light tracking-[-0.03em] pr-4">EXCLUSIVA</span>
+              <span
+                class="text-xs sm:text-sm font-sans tracking-[0.25em] text-[#8E8E93] uppercase font-normal ml-auto self-end pb-2 hidden md:inline-block">
+                [ SÉRIE LIMITADA 2026 ]
+              </span>
+            </span>
+          </h1>
+        </div>
+        <!-- Reference Image Feature Strip (Toteme Inspiration Integration) -->
+        <div class="my-8 sm:my-12 flex justify-center items-center relative overflow-hidden">
+
+        </div>
+        <!-- Hero Editorial Context & High Conversion Action -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 pt-8 hairline-t items-start" id="conceito">
+          <div class="lg:col-span-4 text-xs font-sans tracking-[0.25em] text-[#8E8E93] uppercase">
+            <span class="">A CONCEPÇÃO</span>
+            <div
+              class="relative w-full h-[180px] sm:h-[220px] rounded-[2px] overflow-hidden border border-[#1E1E1E] bg-[#0A0A0A] mt-4 group">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjC29gdofqW_DOjGRHEwIBHvDu1Jf4N3CKs9NgUXawS_KjsUtaPBMwjnhNnyHKwkfSTx8KO8Oaz1sI8yn82OJkrW7IQN8wqQoD2bbWZ9cJoDzonETntKl2G_iuztSdyL2zmc67KpHK8wKMjmfkiX7ebnt2tDJEXoL1Olz10qQZ9vZDs_kZRTYReAkZIm6cnBvOfkvVGaRyc_29Dqc5FiWC1qImuCh9azApT666PHWn3gJjSXOOxnKbQER69KPIALv5jbQ"
+                alt="Curadoria de alfaiataria e polos autorais"
+                class="w-full h-full object-cover grayscale contrast-110 duration-700 transition-all ease-out group-hover:scale-105 group-hover:grayscale-0 cursor-pointer">
+            </div>
+          </div>
+          <div class="lg:col-span-5 space-y-6">
+            <p class="font-serif text-2xl sm:text-3xl lg:text-3xl leading-snug font-light text-[#F4F4F2]">
+              Acesso direto às melhores seleções de moda, peças garimpadas e condições exclusivas. Sem ruído, apenas o
+              essencial.</p>
+            <p class="text-sm font-sans text-[#8E8E93] leading-relaxed max-w-xl font-light">
+              Criado para indivíduos exigentes que buscam a precisão de cortes refinados, tecidos nobres e oportunidades
+              restritas do mercado global de luxo antes de chegarem ao varejo de massa.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col space-y-4 pt-2 lg:pt-0">
+            <!-- CTA Primário Ultra-Luxuoso (Monocromático, sem tom verde estridente) -->
+            <a class="luxury-btn w-full bg-[#F4F4F2] text-[#070707] text-center py-4 px-6 text-xs uppercase tracking-[0.22em] font-medium rounded-[1px] block"
+              data-purpose="primary-hero-cta" href="#convite">
+              ENTRAR NO GRUPO EXCLUSIVO →
+            </a>
+            <!-- Micro Caption com indicador tátil -->
+            <div
+              class="flex items-center justify-start lg:justify-center space-x-2.5 pt-1 text-[11px] text-[#8E8E93] tracking-[0.08em] font-light">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#F4F4F2] status-pulse"></span>
+              <span class="">Entrada restrita • Vagas limitadas por lote</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: HeroSection -->
+    <!-- BEGIN: ThreePillarsSection -->
+    <section class="hairline-b bg-[#070707]" data-purpose="three-pillars" id="pilares">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-24">
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 pb-4 hairline-b">
+          <div>
+            <span class="text-[10px] tracking-[0.35em] uppercase text-[#8E8E93] block mb-2 font-mono">ARQUITETURA DO
+              PROJETO</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-[#F4F4F2] font-normal tracking-tight">Os Três Pilares da
+              Curadoria</h2>
+          </div>
+          <p class="text-xs text-[#8E8E93] tracking-[0.2em] uppercase mt-4 sm:mt-0 font-sans">
+            MÉTODO DE FILTRAGEM RIGOROSA
+          </p>
+        </div>
+        <!-- Asymmetric Hairline Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 hairline-t hairline-b md:divide-x divide-y md:divide-y-0 divide-[#1E1E1E]">
+          <!-- Bloco 01 -->
+          <article
+            class="py-12 md:py-14 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#0A0A0A] transition-colors duration-500"
+            data-purpose="pillar-card-01">
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase">01 / SELEÇÃO DIÁRIA</span>
+                <span class="text-[11px] text-stone-600 font-serif italic">[ Critério 01 ]</span>
+              </div>
+              <h3 class="font-serif text-2xl lg:text-3xl text-[#F4F4F2] font-light mb-4 leading-tight">
+                Filtro Rigoroso &amp; Relevância
+              </h3>
+              <p class="text-sm font-sans text-[#8E8E93] leading-relaxed font-light">
+                Filtro rigoroso de achados com desconto real e relevância estética comprovada. Analisamos composição
+                têxtil, corte e autenticidade antes de qualquer envio.
+              </p>
+            </div>
+            <div
+              class="mt-12 pt-6 hairline-t flex items-center justify-between text-[11px] text-[#555555] tracking-[0.2em] uppercase font-sans">
+              <span class="">ZERO PUBLICIDADE</span>
+              <span class="">100% INDEPENDENTE</span>
+            </div>
+          </article>
+          <!-- Bloco 02 -->
+          <article
+            class="py-12 md:py-14 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#0A0A0A] transition-colors duration-500"
+            data-purpose="pillar-card-02">
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase">02 / ACERVO EM PRIMEIRA
+                  MÃO</span>
+                <span class="text-[11px] text-stone-600 font-serif italic">[ Critério 02 ]</span>
+              </div>
+              <h3 class="font-serif text-2xl lg:text-3xl text-[#F4F4F2] font-light mb-4 leading-tight">
+                Acesso Pré-Esgotamento
+              </h3>
+              <p class="text-sm font-sans text-[#8E8E93] leading-relaxed font-light">
+                Links diretos e verificados entregues antes do esgotamento de estoque. Monitoramos private sales
+                europeias e estoques residuais de alfaiatarias de renome.
+              </p>
+            </div>
+            <div
+              class="mt-12 pt-6 hairline-t flex items-center justify-between text-[11px] text-[#555555] tracking-[0.2em] uppercase font-sans">
+              <span class="">ALERTA ANTECIPADO</span>
+              <span class="">LINKS DIRETOS</span>
+            </div>
+          </article>
+          <!-- Bloco 03 -->
+          <article
+            class="py-12 md:py-14 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#0A0A0A] transition-colors duration-500"
+            data-purpose="pillar-card-03">
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase">03 / PRIVACIDADE &amp;
+                  FOCO</span>
+                <span class="text-[11px] text-stone-600 font-serif italic">[ Critério 03 ]</span>
+              </div>
+              <h3 class="font-serif text-2xl lg:text-3xl text-[#F4F4F2] font-light mb-4 leading-tight">
+                Silêncio Absoluto
+              </h3>
+              <p class="text-sm font-sans text-[#8E8E93] leading-relaxed font-light">
+                Grupo fechado e silencioso. Apenas a curadoria selecionada, sem mensagens paralelas, discussões
+                dispersas ou spam constante. Apenas valor tangível.
+              </p>
+            </div>
+            <div
+              class="mt-12 pt-6 hairline-t flex items-center justify-between text-[11px] text-[#555555] tracking-[0.2em] uppercase font-sans">
+              <span class="">CANAL UNIDIRECIONAL</span>
+              <span class="">MÁXIMA EFICIÊNCIA</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- END: ThreePillarsSection -->
+    <!-- BEGIN: LookbookCurationSection -->
+    <section class="hairline-b bg-[#070707] py-20 sm:py-28" data-purpose="lookbook-curation" id="curadoria">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        <!-- Section Intro -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div class="max-w-xl">
+            <span class="text-[10px] tracking-[0.35em] text-[#8E8E93] uppercase block mb-3 font-mono">[ PREVIEW
+              EDITORIAL ]</span>
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#F4F4F2] font-light tracking-tight uppercase">
+              Acervo &amp; Espécimes
+            </h2>
+          </div>
+          <div class="text-right">
+            <div class="text-xs tracking-[0.25em] text-[#F4F4F2] uppercase font-mono">
+              CURADORIA ATIVA • DISPONIBILIDADE INSTANTÂNEA
+            </div>
+            <p class="text-xs text-[#8E8E93] mt-1 font-light">Categorias inspecionadas semanalmente</p>
+          </div>
+        </div>
+        <!-- Editorial 3-Card Grid with Minimalist European Vibe -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10">
+          <!-- Card 01: Alfaiataria & Outwear -->
+          <article class="editorial-card group flex flex-col" data-purpose="curation-item-01">
+            <div class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6">
+              <!-- Descriptive monochromatic fashion visual placeholder -->
+              <img alt="Polo de malha refinada Ranquine em tonalidade areia"
+                class="w-full h-full object-cover grayscale contrast-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5SAV862vsnERsDhwvbJGcHDmvvJjhtsHHDVXsVgBSYpqppucBBL5UAHdLYX7VC-SXpGAtYzcvhS4Ux3Y0rkqEaxj9AWhmO2ex1Hn_t6Nau6Vcpq60RJxA-j_1SGC-dANg-pdycyUywGV1e7CjiWVYFk8Jxvspd7WobX8C0kVG61QbgOVkQVxJktzB5yi4ekXFX-SKORFj90hQanHBR3WRerv37gl9-vptP5C8nmIH9-94PQ4NL_jHSMSmo_yWE3ZCjYk">
+              <div
+                class="absolute top-4 left-4 text-[9px] tracking-[0.3em] uppercase bg-[#070707]/80 backdrop-blur-md px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
+                LOTE 01
+              </div>
+              <div class="absolute bottom-4 right-4 text-[10px] tracking-[0.2em] font-serif italic text-[#F4F4F2]/80">
+                Pólo Piquet de Gramatura Alta</div>
+            </div>
+            <div class="flex flex-col flex-grow justify-between">
+              <div>
+                <span class="text-[11px] font-mono tracking-[0.25em] text-[#8E8E93] uppercase block mb-1">
+                  01. ALFAIATARIA &amp; OUTWEAR
+                </span>
+                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-3">
+                  Trama Texturizada &amp; Polos Autorais
+                </h3>
+                <p class="text-sm font-sans text-[#8E8E93] font-light leading-relaxed mb-4">
+                  Algodão de fibra longa com toque macio e caimento milimétrico, garimpadas direto de ateliês e estoques
+                  limitados com até 60% off.
+                </p>
+              </div>
+              <div
+                class="pt-4 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.18em] uppercase">
+                <span class="">ITÁLIA / BRASIL</span>
+                <span class="text-[#8E8E93] group-hover:text-[#F4F4F2] transition-colors">CONDIÇÃO VERIFICADA →</span>
+              </div>
+            </div>
+          </article>
+          <!-- Card 02: Calçados & Couro -->
+          <article class="editorial-card group flex flex-col" data-purpose="curation-item-02">
+            <div class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6">
+              <img alt="Tênis em couro marrom nobre com solado claro"
+                class="w-full h-full object-cover grayscale contrast-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2zMhL3sIkU3c3mCu6P3eXcW5BHctQhc5Wk9RPtUweqzOeoZMgRT7Z9wwmk2zK-vGEE23oZhogUnm38I1ZnYqmiq7ScgmkLx6_JFEC4LzkFxpGbBMEjKmvO3jjEBp3zYlC-oHqP4WGGjjFi_rYrzfKyiD1JPWLYGqK4g_BW09QG7BiGSqfzRquELX7oacbRO45qZicfs1X0EB-TqNtC3jHORZB1bGObXD8xtQwLz2laF1MmeSwDpKOS6OOCtP6T1yCkds">
+              <div
+                class="absolute top-4 left-4 text-[9px] tracking-[0.3em] uppercase bg-[#070707]/80 backdrop-blur-md px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
+                LOTE 02
+              </div>
+              <div class="absolute bottom-4 right-4 text-[10px] tracking-[0.2em] font-serif italic text-[#F4F4F2]/80">
+                Couro Box &amp; Sola Esculpida
+              </div>
+            </div>
+            <div class="flex flex-col flex-grow justify-between">
+              <div>
+                <span class="text-[11px] font-mono tracking-[0.25em] text-[#8E8E93] uppercase block mb-1">
+                  02. CALÇADOS &amp; COURO
+                </span>
+                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-3">
+                  Sneakers Monocromáticos & Minimalismo
+                </h3>
+                <p class="text-sm font-sans text-[#8E8E93] font-light leading-relaxed mb-4">
+                  Linhas limpas e couro premium com solado esculpido. O equilíbrio exato entre conforto discreto e
+                  elegância atemporal.
+                </p>
+              </div>
+              <div
+                class="pt-4 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.18em] uppercase">
+                <span class="">PORTUGAL / ITÁLIA</span>
+                <span class="text-[#8E8E93] group-hover:text-[#F4F4F2] transition-colors">ACERVO EXCLUSIVO →</span>
+              </div>
+            </div>
+          </article>
+          <!-- Card 03: Acessórios & Essenciais -->
+          <article class="editorial-card group flex flex-col" data-purpose="curation-item-03">
+            <div class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6">
+              <img alt="Lenços de seda, armações de acetato e joalheria geométrica"
+                class="w-full h-full object-cover grayscale contrast-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdqxujiOGGUXC-W6twzB9FvHrf0cgy60jxjTWdVSKw52LXMfyBwAN26gjyYIhai10ZaVSo3ZozuZ4Gw5qUXSMWYjS3pQgj2tlI9kruKgFp9dzkcJY3Go31waYMHQVbd8QycAewKRAjcEawsSnjI-Bwk8pRRvZA8FyKruHM19mx1PblYVWYMMHjAfO6jnTJtl_qy-VEbATO6HGGjsMDMfCk0ex47TNXbFb-WttJUWY5ou_QYfZ0e85RpELuEBUcx9eiU9A">
+              <div
+                class="absolute top-4 left-4 text-[9px] tracking-[0.3em] uppercase bg-[#070707]/80 backdrop-blur-md px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
+                LOTE 03
+              </div>
+              <div class="absolute bottom-4 right-4 text-[10px] tracking-[0.2em] font-serif italic text-[#F4F4F2]/80">
+                Lã Fria &amp; Corte Inglês
+              </div>
+            </div>
+            <div class="flex flex-col flex-grow justify-between">
+              <div>
+                <span class="text-[11px] font-mono tracking-[0.25em] text-[#8E8E93] uppercase block mb-1">
+                  03. ACESSÓRIOS &amp; ESSENCIAIS
+                </span>
+                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-3">
+                  Corte Sob Medida & Peças Estruturadas
+                </h3>
+                <p class="text-sm font-sans text-[#8E8E93] font-light leading-relaxed mb-4">
+                  Coletes de lã fria e camisaria refinada com caimento impecável. Presença sofisticada para ocasiões que
+                  exigem distinção.
+                </p>
+              </div>
+              <div
+                class="pt-4 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.18em] uppercase">
+                <span class="">JAPÃO / SUÍÇA</span>
+                <span class="text-[#8E8E93] group-hover:text-[#F4F4F2] transition-colors">ALERTA INSTANTÂNEO →</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- END: LookbookCurationSection -->
+    <!-- BEGIN: ConversionAndInvitationSection -->
+    <section class="relative py-28 sm:py-36 bg-[#050505]" data-purpose="conversion-section" id="convite">
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-14 text-center">
+        <!-- Metadata Header Tag -->
+        <div
+          class="inline-flex items-center space-x-3 text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-[#8E8E93] mb-8 border border-[#1C1C1C] px-4 py-1.5 bg-[#090909]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#F4F4F2]"></span>
+          <span class="">CONVITE PRIVADO • TEMPORADA 2026</span>
+        </div>
+        <!-- High-Impact Serif Typography -->
+        <h2
+          class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F4F4F2] font-light tracking-tight uppercase leading-[0.95] mb-8 max-w-4xl mx-auto">
+          Faça parte da sociedade.
+        </h2>
+        <!-- Explanatory Subtext -->
+        <p class="font-sans text-base sm:text-lg text-[#8E8E93] max-w-2xl mx-auto leading-relaxed font-light mb-12">
+          O acesso à comunidade é gratuito, mas o número de membros é restrito para manter a qualidade da curadoria e a
+          velocidade de resposta aos estoques.
+        </p>
+        <!-- Final Luxury Conversion Button (Pure monochrome aesthetic) -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-10">
+          <a class="luxury-btn w-full bg-[#F4F4F2] text-[#070707] py-5 px-8 text-xs sm:text-sm uppercase tracking-[0.22em] font-medium rounded-[1px] text-center shadow-2xl block"
+            data-purpose="final-whatsapp-cta" href="https://chat.whatsapp.com/J9BH5DrBy1rLH736OMYR1g"
+            rel="noopener noreferrer" target="_blank">
+            GARANTIR MEU ACESSO NO WHATSAPP →
+          </a>
+        </div>
+        <!-- Exclusivity Verification Badges -->
+        <div
+          class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-[10px] sm:text-[11px] tracking-[0.25em] text-[#666666] uppercase font-mono">
+          <span class="">[ GRUPO VERIFICADO ]</span>
+          <span class="hidden sm:inline text-[#2A2A2A]">•</span>
+          <span class="">[ CONVITE PESSOAL E INTRANSFERÍVEL ]</span>
+          <span class="hidden sm:inline text-[#2A2A2A]">•</span>
+          <span class="">[ AMBIENTE SILENCIOSO ]</span>
+        </div>
+      </div>
+    </section>
+    <!-- END: ConversionAndInvitationSection -->
+  </main>
+  <!-- END: MainContent -->
+  <!-- BEGIN: MainFooter -->
+  <footer class="hairline-t bg-[#050505] text-[#8E8E93]" data-purpose="site-footer">
+    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 py-12 sm:py-16">
+      <!-- Top Grid in Footer -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 hairline-b text-xs">
+        <!-- Col 01: Brand -->
+        <div class="md:col-span-1">
+          <div class="font-serif text-lg tracking-[0.25em] text-[#F4F4F2] uppercase mb-3">VIP SOCIETY</div>
+          <p class="text-[#666666] leading-relaxed text-xs font-light">
+            Plataforma editorial fechada de garimpo e direcionamento estético de alta costura, pronto-a-vestir e design.
+          </p>
+        </div>
+        <!-- Col 02: Diretrizes -->
+        <div>
+          <span class="text-[10px] tracking-[0.3em] uppercase text-[#F4F4F2] block mb-4 font-mono">DIRETRIZES</span>
+          <ul class="space-y-2 text-[#8E8E93]">
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Manifesto de Qualidade</a></li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Política de Silêncio</a></li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Critérios de Curadoria</a></li>
+          </ul>
+        </div>
+        <!-- Col 03: Canais -->
+        <div>
+          <span class="text-[10px] tracking-[0.3em] uppercase text-[#F4F4F2] block mb-4 font-mono">CANAIS
+            PRIVADOS</span>
+          <ul class="space-y-2 text-[#8E8E93]">
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#convite">WhatsApp Curated Feed</a>
+            </li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Edições Impressas (Em breve)</a>
+            </li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Concierge Editorial</a></li>
+          </ul>
+        </div>
+        <!-- Col 04: Localização & Época -->
+        <div>
+          <span class="text-[10px] tracking-[0.3em] uppercase text-[#F4F4F2] block mb-4 font-mono">ESCRITÓRIOS</span>
+          <p class="text-[#666666] leading-relaxed">
+            Acervo Digital • Circulação Global<br>
+            Edição Ativa: 2026/01
+          </p>
+        </div>
+      </div>
+      <!-- Bottom Bar -->
+      <div
+        class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#555555] tracking-[0.15em] uppercase font-light">
+        <p class="">© 2026 VIP Society. Todos os direitos reservados. Curadoria independente.</p>
+        <div class="flex space-x-6 mt-4 sm:mt-0 text-[10px] tracking-[0.2em]">
+          <span class="">PRIVACIDADE</span>
+          <span class="">TERMOS</span>
+          <span class="">ACESSO RESTRITO</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END: MainFooter -->
+  <!-- BEGIN: InteractiveScripts -->
+  <script data-purpose="subtle-interactions">
+    // Smooth interaction when clicking on internal hash anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId !== '#') {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  </script>
+  <!-- END: InteractiveScripts -->
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
