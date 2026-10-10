@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="scroll-smooth bg-[#060606] text-[#F4F4F2]" lang="pt-BR" style="">
+<html class="scroll-smooth bg-[#070707] text-[#F4F4F2]" lang="pt-BR" style="">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>VIP SOCIETY - Curadoria Editorial Privada</title>
+  <title>VIP SOCIETY — Curadoria Editorial Privada</title>
   <!-- Google Fonts: Cormorant Garamond & Inter -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
@@ -20,6 +20,7 @@
           colors: {
             obsidian: '#070707',
             surface: '#0E0E0E',
+            surfaceElevated: '#141414',
             hairline: '#1E1E1E',
             hairlineLight: '#2A2A2A',
             offwhite: '#F4F4F2',
@@ -56,32 +57,55 @@
       color: #070707;
     }
 
-    /* Totême-like high contrast hairline borders */
+    /* Hairline borders inspired by minimalist luxury ateliers */
     .hairline-b {
-      border-bottom: 1px solid #1C1C1C;
+      border-bottom: 1px solid #1E1E1E;
     }
 
     .hairline-t {
-      border-top: 1px solid #1C1C1C;
+      border-top: 1px solid #1E1E1E;
     }
 
     .hairline-r {
-      border-right: 1px solid #1C1C1C;
+      border-right: 1px solid #1E1E1E;
     }
 
     .hairline-l {
-      border-left: 1px solid #1C1C1C;
+      border-left: 1px solid #1E1E1E;
     }
 
     .hairline-all {
-      border: 1px solid #1C1C1C;
+      border: 1px solid #1E1E1E;
     }
 
-    /* Fluid typography for dramatic monumental hero headline */
+    /* Fluid typography for dramatic monumental headlines */
     .headline-monumental {
-      font-size: clamp(3.2rem, 11.5vw, 12.5rem);
-      line-height: 0.88;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.8rem, 8.5vw, 9.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+    }
+
+    /* Ambient Subtle Mesh Drift */
+    @keyframes ambientMesh {
+      0% {
+        transform: translate3d(0%, 0%, 0) scale(1);
+        opacity: 0.35;
+      }
+
+      50% {
+        transform: translate3d(-3%, 4%, 0) scale(1.08);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translate3d(0%, 0%, 0) scale(1);
+        opacity: 0.35;
+      }
+    }
+
+    .ambient-drift {
+      animation: ambientMesh 22s ease-in-out infinite;
+      will-change: transform, opacity;
     }
 
     /* Subtle pulse on status dot */
@@ -90,41 +114,78 @@
       0%,
       100% {
         opacity: 0.35;
-        transform: scale(0.95);
+        transform: scale(0.9);
       }
 
       50% {
         opacity: 1;
-        transform: scale(1.05);
+        transform: scale(1.15);
+        box-shadow: 0 0 10px rgba(244, 244, 242, 0.45);
       }
     }
 
     .status-pulse {
-      animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      animation: pulse-subtle 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
 
-    /* Smooth luxury button hover */
+    /* Navigation Links: Minimalist Expanding Hairline */
+    .nav-hover-line {
+      position: relative;
+    }
+
+    .nav-hover-line::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: #F4F4F2;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-hover-line:hover::after {
+      width: 100%;
+    }
+
+    /* Luxury Shimmer & Magnetic Action Buttons */
     .luxury-btn {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .luxury-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -120%;
+      width: 80%;
+      height: 200%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent);
+      transform: skewX(-22deg);
+      transition: none;
+      pointer-events: none;
+    }
+
+    .luxury-btn:hover::after {
+      left: 160%;
+      transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .luxury-btn:hover {
-      background-color: transparent;
-      color: #F4F4F2;
-      box-shadow: inset 0 0 0 1px #F4F4F2;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px -8px rgba(244, 244, 242, 0.22);
     }
 
-    .luxury-btn-invert {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    .luxury-btn:active {
+      transform: translateY(0) scale(0.98);
     }
 
-    .luxury-btn-invert:hover {
-      background-color: #F4F4F2;
-      color: #070707;
-      border-color: #F4F4F2;
-    }
-
-    /* Image zoom on card hover */
+    /* Editorial Card & Vignette Transitions */
     .editorial-card img {
       transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
     }
@@ -133,285 +194,505 @@
       transform: scale(1.04);
       filter: grayscale(0%) contrast(105%);
     }
+
+    /* Accordion Details Styling */
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details[open] summary .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Scroll Reveal Initial and Revealed States */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .ambient-drift,
+      .status-pulse,
+      .editorial-card img,
+      .luxury-btn::after,
+      .reveal-on-scroll {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
   </style>
   <!-- END: Custom Stylesheet Definition -->
 </head>
 
 <body
-  class="bg-[#070707] text-[#F4F4F2] min-h-screen flex flex-col justify-between selection:bg-[#F4F4F2] selection:text-[#070707]">
-  <!-- BEGIN: MainHeader -->
+  class="bg-[#070707] text-[#F4F4F2] min-h-screen flex flex-col justify-between selection:bg-[#F4F4F2] selection:text-[#070707] relative overflow-x-hidden">
+  <!-- Ambient Background Gradient Mesh -->
+  <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute -top-[25%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] blur-3xl ambient-drift">
+    </div>
+    <div
+      class="absolute top-[50%] -right-[15%] w-[55vw] h-[55vw] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(244,244,242,0.02)_0%,transparent_70%)] blur-3xl ambient-drift"
+      style="animation-delay: -11s;"></div>
+  </div>
+  <!-- BEGIN: MainHeader (Fixo e Otimizado) -->
   <header class="sticky top-0 z-50 bg-[#070707]/90 backdrop-blur-md hairline-b transition-colors duration-300"
     data-purpose="site-header">
-    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 h-20 sm:h-24 flex items-center justify-between">
+    <div
+      class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 h-20 sm:h-24 flex items-center justify-between relative z-10">
       <!-- Brand Logo in High-End Editorial Style -->
-      <a class="flex flex-col group" data-purpose="brand-logo" href="#">
+      <a class="flex flex-col group transition-transform duration-300 hover:opacity-90" data-purpose="brand-logo"
+        href="#">
         <span
-          class="font-serif text-xl sm:text-2xl tracking-[0.28em] font-normal uppercase text-[#F4F4F2] transition-opacity group-hover:opacity-80">
+          class="font-serif text-xl sm:text-2xl tracking-[0.28em] font-normal uppercase text-[#F4F4F2] transition-colors">
           VIP SOCIETY
         </span>
-        <span class="text-[9px] tracking-[0.4em] text-[#8E8E93] uppercase font-sans mt-0.5">
+        <span
+          class="text-[9px] tracking-[0.4em] text-[#8E8E93] uppercase font-sans mt-0.5 group-hover:text-[#F4F4F2] transition-colors duration-300">
           Curadoria Privada
         </span>
       </a>
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center space-x-12" data-purpose="primary-navigation">
-        <a class="text-xs uppercase tracking-[0.25em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
-          href="#conceito">
+      <!-- Desktop Anchor Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-9 xl:space-x-11" data-purpose="primary-navigation">
+        <a class="nav-hover-line text-xs uppercase tracking-[0.22em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
+          href="#o-conceito">
           O Conceito
         </a>
-        <a class="text-xs uppercase tracking-[0.25em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
-          href="#curadoria">
-          Curadoria
+        <a class="nav-hover-line text-xs uppercase tracking-[0.22em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
+          href="#como-funciona">
+          Como Funciona
         </a>
-        <a class="text-xs uppercase tracking-[0.25em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
-          href="#pilares">
-          Estrutura
+        <a class="nav-hover-line text-xs uppercase tracking-[0.22em] text-[#8E8E93] hover:text-[#F4F4F2] transition-colors py-1"
+          href="#qualidade">
+          Qualidade
         </a>
+
+
+
       </nav>
-      <!-- Status Tag Badge & Direct Action Link -->
-      <div class="flex items-center space-x-4 sm:space-x-6" data-purpose="header-status-badge">
+      <!-- Header Conversion CTA -->
+      <div class="flex items-center space-x-3 sm:space-x-4" data-purpose="header-cta-container">
         <div
-          class="hidden xl:flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#8E8E93] border border-[#1E1E1E] px-3.5 py-1.5 rounded-[1px] uppercase bg-[#0B0B0B]">
+          class="hidden xl:flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#8E8E93] border border-[#1E1E1E] px-3 py-1.5 rounded-[1px] uppercase bg-[#0B0B0B]/80">
           <span class="w-1.5 h-1.5 rounded-full bg-stone-300 status-pulse"></span>
-          <span class="">Acesso Privado • Temporada 2026</span>
+          <span class="">Temporada 2026</span>
         </div>
-        <a class="text-xs uppercase tracking-[0.2em] px-4 py-2 text-[#F4F4F2] border border-[#2E2E2E] hover:border-[#F4F4F2] transition-colors"
-          href="#convite">
-          Solicitar Acesso
+        <a class="luxury-btn bg-[#F4F4F2] text-[#070707] text-[11px] sm:text-xs uppercase tracking-[0.2em] font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-[1px] inline-flex items-center space-x-1.5"
+          data-purpose="header-join-vip" href="https://chat.whatsapp.com/" rel="noopener noreferrer" target="_blank">
+          <span class="">ENTRAR NO GRUPO VIP</span>
+          <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
         </a>
       </div>
     </div>
   </header>
   <!-- END: MainHeader -->
   <!-- BEGIN: MainContent -->
-  <main class="flex-grow">
-    <!-- BEGIN: HeroSection -->
-    <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-32 lg:pt-24 lg:pb-36 hairline-b overflow-hidden"
-      data-purpose="hero-editorial">
-      <!-- Ambient Visual Watermark in totême style -->
-      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
-        <!-- Metadata Header line -->
+  <main class="flex-grow relative z-10">
+    <!-- BEGIN: HeroSection (Otimizada para Tráfego Pago) -->
+    <section class="relative pt-10 pb-18 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 hairline-b overflow-hidden"
+      data-purpose="hero-editorial" id="o-conceito">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+        <!-- Top Meta Badge -->
         <div
-          class="flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12 text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-[#8E8E93]">
-          <div class="">[ VOLUME 01 — EDIÇÃO PRIVADA ]</div>
-          <div class="hidden sm:block">rio de janeiro • new york • SÃO PAULO</div>
-          <div class="">MEMBROS SELECIONADOS</div>
+          class="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8 text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-[#8E8E93] reveal-on-scroll is-revealed">
+          <div class="border border-[#1E1E1E] bg-[#0E0E0E] px-3 py-1">[ CONVITE EXCLUSIVO • TEMPORADA 2026 ]</div>
+          <div class="hidden sm:block">MILÃO • PARIS • NOVA YORK • SÃO PAULO</div>
+          <div class="flex items-center space-x-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#F4F4F2] status-pulse"></span>
+            <span class="">ACESSO GRATUITO POR TEMPO LIMITADO</span>
+          </div>
         </div>
-        <!-- Monumental Hero Typographic Layout -->
-        <div class="relative my-6 sm:my-10">
-          <h1 class="headline-monumental font-serif font-light text-[#F4F4F2] uppercase select-none">
-            <span class="block tracking-[-0.02em]">CURADORIA</span>
-            <span class="flex items-baseline justify-between flex-wrap">
-              <span class="italic font-light tracking-[-0.03em] pr-4">EXCLUSIVA</span>
-              <span
-                class="text-xs sm:text-sm font-sans tracking-[0.25em] text-[#8E8E93] uppercase font-normal ml-auto self-end pb-2 hidden md:inline-block">
-                [ SÉRIE LIMITADA 2026 ]
-              </span>
-            </span>
+        <!-- Monumental Editorial Headline -->
+        <div class="my-4 sm:my-8 reveal-on-scroll is-revealed">
+          <h1 class="headline-monumental font-serif font-light text-[#F4F4F2] uppercase select-none tracking-tight">
+            CURADORIA EXCLUSIVA<br>
+            <span class="italic font-light text-stone-300">DE MODA DE LUXO.</span>
           </h1>
         </div>
-        <!-- Reference Image Feature Strip (Toteme Inspiration Integration) -->
-        <div class="my-8 sm:my-12 flex justify-center items-center relative overflow-hidden">
-
-        </div>
-        <!-- Hero Editorial Context & High Conversion Action -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 pt-8 hairline-t items-start" id="conceito">
-          <div class="lg:col-span-4 text-xs font-sans tracking-[0.25em] text-[#8E8E93] uppercase">
-            <span class="">A CONCEPÇÃO</span>
-            <div
-              class="relative w-full h-[180px] sm:h-[220px] rounded-[2px] overflow-hidden border border-[#1E1E1E] bg-[#0A0A0A] mt-4 group">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjC29gdofqW_DOjGRHEwIBHvDu1Jf4N3CKs9NgUXawS_KjsUtaPBMwjnhNnyHKwkfSTx8KO8Oaz1sI8yn82OJkrW7IQN8wqQoD2bbWZ9cJoDzonETntKl2G_iuztSdyL2zmc67KpHK8wKMjmfkiX7ebnt2tDJEXoL1Olz10qQZ9vZDs_kZRTYReAkZIm6cnBvOfkvVGaRyc_29Dqc5FiWC1qImuCh9azApT666PHWn3gJjSXOOxnKbQER69KPIALv5jbQ"
-                alt="Curadoria de alfaiataria e polos autorais"
-                class="w-full h-full object-cover grayscale contrast-110 duration-700 transition-all ease-out group-hover:scale-105 group-hover:grayscale-0 cursor-pointer">
+        <!-- Hero Value Prop, Conversion Box & Editorial Image Integration -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pt-8 hairline-t items-center reveal-on-scroll is-revealed">
+          <!-- Left Column: Copy Direta de Tráfego Pago -->
+          <div class="lg:col-span-6 space-y-6">
+            <p class="font-serif text-2xl sm:text-3xl lg:text-3xl leading-snug font-light text-[#F4F4F2]">
+              Acesso direto a peças garimpadas de alta costura, alfaiataria e streetwear de luxo com até 70% off.
+            </p>
+            <p class="text-sm sm:text-base font-sans text-[#8E8E93] leading-relaxed font-light">
+              Monitoramos private sales europeias e estoques residuais selecionados a dedo. Sem ruído, sem conversas
+              paralelas — apenas links verificados antes do esgotamento em lojas oficiais e maisons parceiras.
+            </p>
+            <!-- Conversion Card de Alto Impacto -->
+            <div class="p-5 sm:p-6 bg-[#0E0E0E] border border-[#222222] rounded-[2px] space-y-4 shadow-2xl">
+              <a class="luxury-btn group w-full bg-[#F4F4F2] text-[#070707] text-center py-4 sm:py-5 px-6 text-xs sm:text-sm uppercase tracking-[0.2em] font-medium rounded-[1px] block transition-all"
+                data-purpose="primary-hero-cta" href="https://chat.whatsapp.com/" rel="noopener noreferrer"
+                target="_blank">
+                <span class="inline-flex items-center justify-center gap-2">
+                  <span class="">QUERO ENTRAR NO GRUPO VIP NO WHATSAPP</span>
+                  <span
+                    class="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1.5">→</span>
+                </span>
+              </a>
+              <!-- Micro-cópias de segurança e redução de atrito -->
+              <div
+                class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-[10px] sm:text-[11px] text-[#A1A1A6] font-mono tracking-wider">
+                <div class="flex items-center space-x-1">
+                  <span class="text-[#F4F4F2]">✓</span>
+                  <span class="">100% Gratuito</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <span class="text-[#F4F4F2]">✓</span>
+                  <span class="">Grupo Fechado</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <span class="text-[#F4F4F2]">✓</span>
+                  <span class="">20 a 30 alertas/dia</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <span class="text-[#F4F4F2]">✓</span>
+                  <span class="">Vagas Limitadas</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="lg:col-span-5 space-y-6">
-            <p class="font-serif text-2xl sm:text-3xl lg:text-3xl leading-snug font-light text-[#F4F4F2]">
-              Acesso direto às melhores seleções de moda, peças garimpadas e condições exclusivas. Sem ruído, apenas o
-              essencial.</p>
-            <p class="text-sm font-sans text-[#8E8E93] leading-relaxed max-w-xl font-light">
-              Criado para indivíduos exigentes que buscam a precisão de cortes refinados, tecidos nobres e oportunidades
-              restritas do mercado global de luxo antes de chegarem ao varejo de massa.
-            </p>
-          </div>
-          <div class="lg:col-span-3 flex flex-col space-y-4 pt-2 lg:pt-0">
-            <!-- CTA Primário Ultra-Luxuoso (Monocromático, sem tom verde estridente) -->
-            <a class="luxury-btn w-full bg-[#F4F4F2] text-[#070707] text-center py-4 px-6 text-xs uppercase tracking-[0.22em] font-medium rounded-[1px] block"
-              data-purpose="primary-hero-cta" href="#convite">
-              ENTRAR NO GRUPO EXCLUSIVO →
-            </a>
-            <!-- Micro Caption com indicador tátil -->
+          <!-- Right Column: Visual Editorial Card -->
+          <div class="lg:col-span-6 flex flex-col items-center">
             <div
-              class="flex items-center justify-start lg:justify-center space-x-2.5 pt-1 text-[11px] text-[#8E8E93] tracking-[0.08em] font-light">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#F4F4F2] status-pulse"></span>
-              <span class="">Entrada restrita • Vagas limitadas por lote</span>
+              class="relative w-full max-w-lg aspect-[4/5] bg-[#0E0E0E] rounded-[2px] overflow-hidden hairline-all group shadow-2xl">
+              <img alt="Polo Texturizada Ranquine em Algodão Nobre"
+                class="w-full h-full object-cover grayscale contrast-110 duration-700 transition-all ease-out group-hover:scale-105 group-hover:grayscale-0"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEqTmMictseffS7QHzfqxQaiX_hiFQ9YUccgNG5FOw-l0CHIQQk04zPtPp0hDVuEBRF9BlN_d3JX6gm7efWorfHt5WdzeBg40SlYVvg5ihD10Qcc123uL2nn8RXts359e0ZleUnluf0UczCPTcieJf1ML685x4O1mYTSm0O8lVYCBNXUi4pjbu0Ahn_LNx3zvvO4aZPdUhuJWmk-UcWuu_SgWenk-kQTAXDyc_gGzyKv43xAp2L_dMMfqmBCCTsOjAp6M">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#070707]/80 via-transparent to-transparent pointer-events-none">
+              </div>
+              <div
+                class="absolute top-4 left-4 text-[9px] tracking-[0.3em] uppercase bg-[#070707]/90 backdrop-blur-md px-3 py-1.5 text-[#F4F4F2] border border-[#222222]">
+                AMOSTRA DE CURADORIA
+              </div>
+              <div
+                class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] text-[#E5E2E1] font-mono">
+                <span class="tracking-widest uppercase">RANQUINE PIQUET 100% NOBRE</span>
+                <span class="text-xs uppercase bg-[#1A1A1A] px-2 py-0.5 border border-[#333]">-60% OFF</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
     <!-- END: HeroSection -->
-    <!-- BEGIN: ThreePillarsSection -->
-    <section class="hairline-b bg-[#070707]" data-purpose="three-pillars" id="pilares">
-      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-24">
-        <!-- Section Header -->
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 pb-4 hairline-b">
+    <!-- BEGIN: ComoFuncionaSection (Passo a Passo em 3 Etapas) -->
+    <section class="hairline-b bg-[#0A0A0A] relative" data-purpose="how-it-works" id="como-funciona">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 py-18 sm:py-24">
+        <div
+          class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 pb-4 hairline-b reveal-on-scroll is-revealed">
           <div>
-            <span class="text-[10px] tracking-[0.35em] uppercase text-[#8E8E93] block mb-2 font-mono">ARQUITETURA DO
-              PROJETO</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-[#F4F4F2] font-normal tracking-tight">Os Três Pilares da
-              Curadoria</h2>
+            <span class="text-[10px] tracking-[0.35em] uppercase text-[#8E8E93] block mb-2 font-mono">FLUXO SIMPLES
+              &amp; TRANSPARENTE</span>
+            <h2 class="font-serif text-3xl sm:text-5xl text-[#F4F4F2] font-normal tracking-tight uppercase">Como
+              Funciona a Sociedade</h2>
           </div>
           <p class="text-xs text-[#8E8E93] tracking-[0.2em] uppercase mt-4 sm:mt-0 font-sans">
-            MÉTODO DE FILTRAGEM RIGOROSA
+            DA FONTE AO SEU GUARDA-ROUPA
           </p>
         </div>
-        <!-- Asymmetric Hairline Grid -->
+        <!-- 3 Steps Grid -->
         <div
           class="grid grid-cols-1 md:grid-cols-3 hairline-t hairline-b md:divide-x divide-y md:divide-y-0 divide-[#1E1E1E]">
-          <!-- Bloco 01 -->
+          <!-- Passo 01 -->
           <article
-            class="py-12 md:py-14 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#0A0A0A] transition-colors duration-500"
-            data-purpose="pillar-card-01">
+            class="reveal-on-scroll py-10 md:py-12 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#111111] transition-all duration-300 is-revealed">
             <div>
-              <div class="flex items-center justify-between mb-8">
-                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase">01 / SELEÇÃO DIÁRIA</span>
-                <span class="text-[11px] text-stone-600 font-serif italic">[ Critério 01 ]</span>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase group-hover:text-[#F4F4F2]">01
+                  / A GARIMPAGEM</span>
+                <span class="text-sm font-serif italic text-stone-500">[ Fase 1 ]</span>
               </div>
               <h3 class="font-serif text-2xl lg:text-3xl text-[#F4F4F2] font-light mb-4 leading-tight">
-                Filtro Rigoroso &amp; Relevância
+                Rastreio Global Contínuo
               </h3>
               <p class="text-sm font-sans text-[#8E8E93] leading-relaxed font-light">
-                Filtro rigoroso de achados com desconto real e relevância estética comprovada. Analisamos composição
-                têxtil, corte e autenticidade antes de qualquer envio.
+                Nosso comitê em Milão, Paris e São Paulo rastreia estoques de luxo residuais e private sales com
+                descontos reais entre 40% e 70%.
               </p>
             </div>
             <div
-              class="mt-12 pt-6 hairline-t flex items-center justify-between text-[11px] text-[#555555] tracking-[0.2em] uppercase font-sans">
-              <span class="">ZERO PUBLICIDADE</span>
-              <span class="">100% INDEPENDENTE</span>
+              class="mt-8 pt-4 hairline-t text-[10px] tracking-[0.2em] uppercase font-mono text-[#666666] group-hover:text-[#8E8E93]">
+              RADAR ATIVO 24/7
             </div>
           </article>
-          <!-- Bloco 02 -->
+          <!-- Passo 02 -->
           <article
-            class="py-12 md:py-14 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#0A0A0A] transition-colors duration-500"
-            data-purpose="pillar-card-02">
+            class="reveal-on-scroll py-10 md:py-12 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#111111] transition-all duration-300 is-revealed"
+            style="transition-delay: 150ms;">
             <div>
-              <div class="flex items-center justify-between mb-8">
-                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase">02 / ACERVO EM PRIMEIRA
-                  MÃO</span>
-                <span class="text-[11px] text-stone-600 font-serif italic">[ Critério 02 ]</span>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase group-hover:text-[#F4F4F2]">02
+                  / O ALERTA NO GRUPO</span>
+                <span class="text-sm font-serif italic text-stone-500">[ Fase 2 ]</span>
               </div>
               <h3 class="font-serif text-2xl lg:text-3xl text-[#F4F4F2] font-light mb-4 leading-tight">
-                Acesso Pré-Esgotamento
+                Envio Imediato &amp; Verificado
               </h3>
               <p class="text-sm font-sans text-[#8E8E93] leading-relaxed font-light">
-                Links diretos e verificados entregues antes do esgotamento de estoque. Monitoramos private sales
-                europeias e estoques residuais de alfaiatarias de renome.
+                Você recebe a notificação no WhatsApp com fotos, composição, desconto verificado e o link direto antes
+                da peça ser aberta ao grande público.
               </p>
             </div>
             <div
-              class="mt-12 pt-6 hairline-t flex items-center justify-between text-[11px] text-[#555555] tracking-[0.2em] uppercase font-sans">
-              <span class="">ALERTA ANTECIPADO</span>
-              <span class="">LINKS DIRETOS</span>
+              class="mt-8 pt-4 hairline-t text-[10px] tracking-[0.2em] uppercase font-mono text-[#666666] group-hover:text-[#8E8E93]">
+              AVISO PRÉ-ESGOTAMENTO
             </div>
           </article>
-          <!-- Bloco 03 -->
+          <!-- Passo 03 -->
           <article
-            class="py-12 md:py-14 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#0A0A0A] transition-colors duration-500"
-            data-purpose="pillar-card-03">
+            class="reveal-on-scroll py-10 md:py-12 px-4 md:px-8 lg:px-10 flex flex-col justify-between group hover:bg-[#111111] transition-all duration-300 is-revealed"
+            style="transition-delay: 300ms;">
             <div>
-              <div class="flex items-center justify-between mb-8">
-                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase">03 / PRIVACIDADE &amp;
-                  FOCO</span>
-                <span class="text-[11px] text-stone-600 font-serif italic">[ Critério 03 ]</span>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-mono tracking-[0.3em] text-[#8E8E93] uppercase group-hover:text-[#F4F4F2]">03
+                  / ACESSO ANTECIPADO</span>
+                <span class="text-sm font-serif italic text-stone-500">[ Fase 3 ]</span>
               </div>
               <h3 class="font-serif text-2xl lg:text-3xl text-[#F4F4F2] font-light mb-4 leading-tight">
-                Silêncio Absoluto
+                Compra Oficial e Segura
               </h3>
               <p class="text-sm font-sans text-[#8E8E93] leading-relaxed font-light">
-                Grupo fechado e silencioso. Apenas a curadoria selecionada, sem mensagens paralelas, discussões
-                dispersas ou spam constante. Apenas valor tangível.
+                Você clica e compra diretamente na loja oficial ou na maison com nota fiscal em seu nome, garantia e
+                condição exclusiva de membro VIP.
               </p>
             </div>
             <div
-              class="mt-12 pt-6 hairline-t flex items-center justify-between text-[11px] text-[#555555] tracking-[0.2em] uppercase font-sans">
-              <span class="">CANAL UNIDIRECIONAL</span>
-              <span class="">MÁXIMA EFICIÊNCIA</span>
+              class="mt-8 pt-4 hairline-t text-[10px] tracking-[0.2em] uppercase font-mono text-[#666666] group-hover:text-[#8E8E93]">
+              COMPRA DIRETA NA FONTE
             </div>
           </article>
         </div>
       </div>
     </section>
-    <!-- END: ThreePillarsSection -->
-    <!-- BEGIN: LookbookCurationSection -->
-    <section class="hairline-b bg-[#070707] py-20 sm:py-28" data-purpose="lookbook-curation" id="curadoria">
+    <!-- END: ComoFuncionaSection -->
+    <!-- BEGIN: QualidadeManifestoSection (Pilares de Qualidade & Auditoria) -->
+    <section class="hairline-b bg-[#070707] relative py-20 sm:py-28" data-purpose="quality-pillars" id="qualidade">
       <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
-        <!-- Section Intro -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div class="max-w-xl">
-            <span class="text-[10px] tracking-[0.35em] text-[#8E8E93] uppercase block mb-3 font-mono">[ PREVIEW
-              EDITORIAL ]</span>
-            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#F4F4F2] font-light tracking-tight uppercase">
-              Acervo &amp; Espécimes
+        <!-- Section Header with Refusal Metric -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14 pb-8 hairline-b reveal-on-scroll is-revealed">
+          <div class="lg:col-span-8">
+            <span class="text-[10px] tracking-[0.35em] uppercase text-[#8E8E93] block mb-2 font-mono">[ AUDITORIA
+              ESTÉTICA &amp; TÊXTIL ]</span>
+            <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#F4F4F2] font-light tracking-tight uppercase">
+              Manifesto de Rigor &amp; Qualidade
             </h2>
           </div>
-          <div class="text-right">
-            <div class="text-xs tracking-[0.25em] text-[#F4F4F2] uppercase font-mono">
-              CURADORIA ATIVA • DISPONIBILIDADE INSTANTÂNEA
-            </div>
-            <p class="text-xs text-[#8E8E93] mt-1 font-light">Categorias inspecionadas semanalmente</p>
+          <div class="lg:col-span-4 bg-[#0E0E0E] p-5 border border-[#222222]">
+            <div class="text-3xl sm:text-4xl font-serif text-[#F4F4F2] font-light">98% TAXA DE RECUSA</div>
+            <p class="text-xs text-[#8E8E93] mt-2 font-light leading-relaxed">
+              Apenas 2 em cada 100 peças avaliadas atendem integralmente aos nossos critérios de conservação,
+              procedência, caimento e composição têxtil.
+            </p>
           </div>
         </div>
-        <!-- Editorial 3-Card Grid with Minimalist European Vibe -->
+        <!-- 4 Architectural Pillars Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Pilar 1 -->
+          <div
+            class="p-6 sm:p-8 bg-[#0B0B0B] border border-[#1E1E1E] hover:border-[#383838] transition-colors reveal-on-scroll is-revealed">
+            <span class="text-xs font-mono text-[#8E8E93] block mb-4 tracking-widest">PILAR 01</span>
+            <h3 class="font-serif text-2xl text-[#F4F4F2] mb-3">Autenticidade &amp; NF</h3>
+            <p class="text-xs sm:text-sm text-[#8E8E93] font-light leading-relaxed">
+              Todas as oportunidades direcionam para compras oficiais com nota fiscal, garantindo 100% de legitimidade
+              sem intermediários duvidosos.
+            </p>
+          </div>
+          <!-- Pilar 2 -->
+          <div
+            class="p-6 sm:p-8 bg-[#0B0B0B] border border-[#1E1E1E] hover:border-[#383838] transition-colors reveal-on-scroll is-revealed"
+            style="transition-delay: 100ms;">
+            <span class="text-xs font-mono text-[#8E8E93] block mb-4 tracking-widest">PILAR 02</span>
+            <h3 class="font-serif text-2xl text-[#F4F4F2] mb-3">Fibras Nobres</h3>
+            <p class="text-xs sm:text-sm text-[#8E8E93] font-light leading-relaxed">
+              Prioridade inegociável para matérias-primas de alta durabilidade: algodão pima, seda mulberry, lã merino,
+              linho puro e couro bovino legítimo.
+            </p>
+          </div>
+          <!-- Pilar 3 -->
+          <div
+            class="p-6 sm:p-8 bg-[#0B0B0B] border border-[#1E1E1E] hover:border-[#383838] transition-colors reveal-on-scroll is-revealed"
+            style="transition-delay: 200ms;">
+            <span class="text-xs font-mono text-[#8E8E93] block mb-4 tracking-widest">PILAR 03</span>
+            <h3 class="font-serif text-2xl text-[#F4F4F2] mb-3">Estado Imaculado</h3>
+            <p class="text-xs sm:text-sm text-[#8E8E93] font-light leading-relaxed">
+              Peças nunca usadas, oriundas de overstock institucional ou mostruários impecáveis de desfiles
+              internacionais com padrão de nova coleção.
+            </p>
+          </div>
+          <!-- Pilar 4 -->
+          <div
+            class="p-6 sm:p-8 bg-[#0B0B0B] border border-[#1E1E1E] hover:border-[#383838] transition-colors reveal-on-scroll is-revealed"
+            style="transition-delay: 300ms;">
+            <span class="text-xs font-mono text-[#8E8E93] block mb-4 tracking-widest">PILAR 04</span>
+            <h3 class="font-serif text-2xl text-[#F4F4F2] mb-3">Desconto Real (40-70%)</h3>
+            <p class="text-xs sm:text-sm text-[#8E8E93] font-light leading-relaxed">
+              Não divulgamos promoções fictícias. Auditamos o preço histórico de etiqueta para certificar que o desconto
+              seja expressivo e genuíno.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: QualidadeManifestoSection -->
+    <!-- BEGIN: PoliticaSilencioSection (Unificando Página de Silêncio) -->
+    <section class="hairline-b bg-[#0B0B0B] relative py-20 sm:py-28" data-purpose="silence-policy" id="silencio">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        <div class="max-w-3xl mb-14 reveal-on-scroll is-revealed">
+          <span class="text-[10px] tracking-[0.35em] uppercase text-[#8E8E93] block mb-2 font-mono">[ PROTOCOLO DE
+            CONVIVÊNCIA ]</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-[#F4F4F2] font-light tracking-tight uppercase">
+            Política de Silêncio Absoluto
+          </h2>
+          <p class="font-serif italic text-xl sm:text-2xl text-stone-300 mt-3 font-light">
+            "O fim definitivo dos grupos caóticos e barulhentos."
+          </p>
+        </div>
+        <!-- 3 Silêncio Diferenciais -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- 01 -->
+          <div class="p-6 sm:p-8 bg-[#070707] border border-[#1E1E1E] reveal-on-scroll is-revealed">
+            <div
+              class="w-10 h-10 border border-[#333] flex items-center justify-center font-serif text-lg mb-6 text-[#F4F4F2]">
+              I
+            </div>
+            <h3 class="font-serif text-2xl text-[#F4F4F2] font-normal mb-3">Canal 100% Unidirecional</h3>
+            <p class="text-sm text-[#8E8E93] font-light leading-relaxed">
+              Apenas os curadores autorizados postam. Zero mensagens de "bom dia", zero memes, zero discussões e zero
+              ofertas sem sentido.
+            </p>
+          </div>
+          <!-- 02 -->
+          <div class="p-6 sm:p-8 bg-[#070707] border border-[#1E1E1E] reveal-on-scroll is-revealed"
+            style="transition-delay: 150ms;">
+            <div
+              class="w-10 h-10 border border-[#333] flex items-center justify-center font-serif text-lg mb-6 text-[#F4F4F2]">
+              II
+            </div>
+            <h3 class="font-serif text-2xl text-[#F4F4F2] font-normal mb-3">Máxima Eficiência</h3>
+            <p class="text-sm text-[#8E8E93] font-light leading-relaxed">
+              Você só é notificado quando surge uma oportunidade realmente extraordinária. Em média, enviamos apenas de
+              1 a 3 achados por semana.
+            </p>
+          </div>
+          <!-- 03 -->
+          <div class="p-6 sm:p-8 bg-[#070707] border border-[#1E1E1E] reveal-on-scroll is-revealed"
+            style="transition-delay: 300ms;">
+            <div
+              class="w-10 h-10 border border-[#333] flex items-center justify-center font-serif text-lg mb-6 text-[#F4F4F2]">
+              III
+            </div>
+            <h3 class="font-serif text-2xl text-[#F4F4F2] font-normal mb-3">Anonimato dos Membros</h3>
+            <p class="text-sm text-[#8E8E93] font-light leading-relaxed">
+              Sua identidade, foto de perfil e número de telefone ficam preservados dentro do canal comunitário oficial,
+              impedindo abordagens indevidas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: PoliticaSilencioSection -->
+    <!-- BEGIN: AcervoPreviewSection (Espécimes Reais do DataStore) -->
+    <section class="hairline-b bg-[#070707] py-20 sm:py-28 relative" data-purpose="lookbook-curation" id="acervo">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal-on-scroll is-revealed">
+          <div class="max-w-xl">
+            <span class="text-[10px] tracking-[0.35em] text-[#8E8E93] uppercase block mb-3 font-mono">[ PREVIEW
+              EDITORIAL DO GRUPO ]</span>
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#F4F4F2] font-light tracking-tight uppercase">
+              Acervo &amp; Espécimes Recentes
+            </h2>
+          </div>
+          <div class="text-left md:text-right">
+            <div class="text-xs tracking-[0.25em] text-[#F4F4F2] uppercase font-mono">
+              GARIMPADOS RECENTEMENTE
+            </div>
+            <p class="text-xs text-[#8E8E93] mt-1 font-light">Peças entregues no grupo VIP com velocidade de esgotamento
+            </p>
+          </div>
+        </div>
+        <!-- 3 Item Grid com Fotos Reais do DataStore -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10">
-          <!-- Card 01: Alfaiataria & Outwear -->
-          <article class="editorial-card group flex flex-col" data-purpose="curation-item-01">
-            <div class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6">
-              <!-- Descriptive monochromatic fashion visual placeholder -->
-              <img alt="Polo de malha refinada Ranquine em tonalidade areia"
-                class="w-full h-full object-cover grayscale contrast-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5SAV862vsnERsDhwvbJGcHDmvvJjhtsHHDVXsVgBSYpqppucBBL5UAHdLYX7VC-SXpGAtYzcvhS4Ux3Y0rkqEaxj9AWhmO2ex1Hn_t6Nau6Vcpq60RJxA-j_1SGC-dANg-pdycyUywGV1e7CjiWVYFk8Jxvspd7WobX8C0kVG61QbgOVkQVxJktzB5yi4ekXFX-SKORFj90hQanHBR3WRerv37gl9-vptP5C8nmIH9-94PQ4NL_jHSMSmo_yWE3ZCjYk">
+          <!-- Item 01: Polo Texturizada Ranquine -->
+          <article class="editorial-card group flex flex-col reveal-on-scroll is-revealed"
+            data-purpose="curation-item-01">
+            <div
+              class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6 group-hover:border-[#383838] transition-colors duration-500">
+              <img alt="Polo Texturizada Ranquine em Algodão Nobre Areia"
+                class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 duration-700 ease-out transition-transform"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEqTmMictseffS7QHzfqxQaiX_hiFQ9YUccgNG5FOw-l0CHIQQk04zPtPp0hDVuEBRF9BlN_d3JX6gm7efWorfHt5WdzeBg40SlYVvg5ihD10Qcc123uL2nn8RXts359e0ZleUnluf0UczCPTcieJf1ML685x4O1mYTSm0O8lVYCBNXUi4pjbu0Ahn_LNx3zvvO4aZPdUhuJWmk-UcWuu_SgWenk-kQTAXDyc_gGzyKv43xAp2L_dMMfqmBCCTsOjAp6M">
               <div
-                class="absolute top-4 left-4 text-[9px] tracking-[0.3em] uppercase bg-[#070707]/80 backdrop-blur-md px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
-                LOTE 01
+                class="absolute inset-0 bg-gradient-to-t from-[#070707]/70 via-transparent to-transparent pointer-events-none">
               </div>
-              <div class="absolute bottom-4 right-4 text-[10px] tracking-[0.2em] font-serif italic text-[#F4F4F2]/80">
-                Pólo Piquet de Gramatura Alta</div>
+              <!-- Badges -->
+              <div
+                class="absolute top-4 left-4 text-[9px] tracking-[0.25em] uppercase bg-[#070707]/90 px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
+                LOTE 01 • -60% OFF
+              </div>
+              <div
+                class="absolute top-4 right-4 text-[9px] tracking-[0.2em] uppercase bg-stone-900/90 text-stone-300 px-2.5 py-1 border border-stone-700 font-mono">
+                Esgotado em 14 min
+              </div>
+              <div class="absolute bottom-4 right-4 text-[11px] tracking-[0.15em] font-mono text-[#F4F4F2]/90">
+                R$ 290 <span class="line-through text-stone-500 text-[10px]">R$ 720</span>
+              </div>
             </div>
             <div class="flex flex-col flex-grow justify-between">
               <div>
                 <span class="text-[11px] font-mono tracking-[0.25em] text-[#8E8E93] uppercase block mb-1">
-                  01. ALFAIATARIA &amp; OUTWEAR
+                  01. ALFAIATARIA CASUAL
                 </span>
-                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-3">
-                  Trama Texturizada &amp; Polos Autorais
+                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-2">
+                  Polo Texturizada Ranquine Sand
                 </h3>
                 <p class="text-sm font-sans text-[#8E8E93] font-light leading-relaxed mb-4">
-                  Algodão de fibra longa com toque macio e caimento milimétrico, garimpadas direto de ateliês e estoques
-                  limitados com até 60% off.
+                  100% algodão nobre com gramatura encorpada e colarinho estruturado. Enviado com acesso a estoque de
+                  private sale.
                 </p>
               </div>
               <div
-                class="pt-4 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.18em] uppercase">
-                <span class="">ITÁLIA / BRASIL</span>
-                <span class="text-[#8E8E93] group-hover:text-[#F4F4F2] transition-colors">CONDIÇÃO VERIFICADA →</span>
+                class="pt-3 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.15em] uppercase font-mono">
+                <span class="">ALGODÃO NOBRE</span>
+                <span class="text-[#8E8E93]">STATUS: CONCLUÍDO</span>
               </div>
             </div>
           </article>
-          <!-- Card 02: Calçados & Couro -->
-          <article class="editorial-card group flex flex-col" data-purpose="curation-item-02">
-            <div class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6">
-              <img alt="Tênis em couro marrom nobre com solado claro"
-                class="w-full h-full object-cover grayscale contrast-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2zMhL3sIkU3c3mCu6P3eXcW5BHctQhc5Wk9RPtUweqzOeoZMgRT7Z9wwmk2zK-vGEE23oZhogUnm38I1ZnYqmiq7ScgmkLx6_JFEC4LzkFxpGbBMEjKmvO3jjEBp3zYlC-oHqP4WGGjjFi_rYrzfKyiD1JPWLYGqK4g_BW09QG7BiGSqfzRquELX7oacbRO45qZicfs1X0EB-TqNtC3jHORZB1bGObXD8xtQwLz2laF1MmeSwDpKOS6OOCtP6T1yCkds">
+          <!-- Item 02: Sneaker Minimalista Couro Bovino -->
+          <article class="editorial-card group flex flex-col reveal-on-scroll is-revealed"
+            data-purpose="curation-item-02" style="transition-delay: 150ms;">
+            <div
+              class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6 group-hover:border-[#383838] transition-colors duration-500">
+              <img alt="Sneaker Minimalista Couro Bovino Marrom"
+                class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 duration-700 ease-out transition-transform"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuANbnyeEK0lH9G5URp0mI5T_PjvlWzq3Ew8-wZvPQ-GGhsiyweQfXwF4gkCRUe-bf35eC7p9oamtlVO691TkjoXDVxGqTJgdRpwKUdmU000OvoHhpII3653P-duaLwAtiX4DGO3tT_MiLXS1b0wTmV_heNm9N2bfAO15krcLEAyLPUMfcqypPIFs4grefgSAnSsXoPMfZucxuaWkebAWPeVSREOYllxMtWKAAH8BN-onmhsRjB5sOuSsrUoYQ9miYlpNN4">
               <div
-                class="absolute top-4 left-4 text-[9px] tracking-[0.3em] uppercase bg-[#070707]/80 backdrop-blur-md px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
-                LOTE 02
+                class="absolute inset-0 bg-gradient-to-t from-[#070707]/70 via-transparent to-transparent pointer-events-none">
               </div>
-              <div class="absolute bottom-4 right-4 text-[10px] tracking-[0.2em] font-serif italic text-[#F4F4F2]/80">
-                Couro Box &amp; Sola Esculpida
+              <!-- Badges -->
+              <div
+                class="absolute top-4 left-4 text-[9px] tracking-[0.25em] uppercase bg-[#070707]/90 px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
+                LOTE 02 • -55% OFF
+              </div>
+              <div
+                class="absolute top-4 right-4 text-[9px] tracking-[0.2em] uppercase bg-stone-900/90 text-stone-300 px-2.5 py-1 border border-stone-700 font-mono">
+                Esgotado em 22 min
+              </div>
+              <div class="absolute bottom-4 right-4 text-[11px] tracking-[0.15em] font-mono text-[#F4F4F2]/90">
+                R$ 410 <span class="line-through text-stone-500 text-[10px]">R$ 920</span>
               </div>
             </div>
             <div class="flex flex-col flex-grow justify-between">
@@ -419,150 +700,254 @@
                 <span class="text-[11px] font-mono tracking-[0.25em] text-[#8E8E93] uppercase block mb-1">
                   02. CALÇADOS &amp; COURO
                 </span>
-                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-3">
-                  Sneakers Monocromáticos & Minimalismo
+                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-2">
+                  Sneaker Minimalista Couro Bovino
                 </h3>
                 <p class="text-sm font-sans text-[#8E8E93] font-light leading-relaxed mb-4">
-                  Linhas limpas e couro premium com solado esculpido. O equilíbrio exato entre conforto discreto e
-                  elegância atemporal.
+                  Construção em couro nobre marrom escuro, solado blaqueado e forro respirável. Silhueta sóbria de alto
+                  requinte.
                 </p>
               </div>
               <div
-                class="pt-4 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.18em] uppercase">
-                <span class="">PORTUGAL / ITÁLIA</span>
-                <span class="text-[#8E8E93] group-hover:text-[#F4F4F2] transition-colors">ACERVO EXCLUSIVO →</span>
+                class="pt-3 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.15em] uppercase font-mono">
+                <span class="">COURO BOVINO</span>
+                <span class="text-[#8E8E93]">STATUS: CONCLUÍDO</span>
               </div>
             </div>
           </article>
-          <!-- Card 03: Acessórios & Essenciais -->
-          <article class="editorial-card group flex flex-col" data-purpose="curation-item-03">
-            <div class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6">
-              <img alt="Lenços de seda, armações de acetato e joalheria geométrica"
-                class="w-full h-full object-cover grayscale contrast-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdqxujiOGGUXC-W6twzB9FvHrf0cgy60jxjTWdVSKw52LXMfyBwAN26gjyYIhai10ZaVSo3ZozuZ4Gw5qUXSMWYjS3pQgj2tlI9kruKgFp9dzkcJY3Go31waYMHQVbd8QycAewKRAjcEawsSnjI-Bwk8pRRvZA8FyKruHM19mx1PblYVWYMMHjAfO6jnTJtl_qy-VEbATO6HGGjsMDMfCk0ex47TNXbFb-WttJUWY5ou_QYfZ0e85RpELuEBUcx9eiU9A">
+          <!-- Item 03: Colete Alfaiataria & Camisaria -->
+          <article class="editorial-card group flex flex-col reveal-on-scroll is-revealed"
+            data-purpose="curation-item-03" style="transition-delay: 300ms;">
+            <div
+              class="relative w-full aspect-[3/4] bg-[#111111] overflow-hidden hairline-all mb-6 group-hover:border-[#383838] transition-colors duration-500">
+              <img alt="Colete Alfaiataria &amp; Camisaria Cinza Nobre"
+                class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 duration-700 ease-out transition-transform"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1G84esk3YPGLCUZbMs9Uev_zjJ8Z_Peplgkpu3PbjhPPBbzoDUSDX4t3HrWszxEX9At8vSv6nuypI9WBBfxLz2QPgytw_B8CEIjEj9U4Dc1RWMgLvO7SfmNEdX7ADGU-3n8hITEZk7VVgxKW8pOAviuKdy0cYW7v5BWWGnK902ClpF10mz5vx6FcwLYCWM4433oxRQStmgHiK7PKTfkAOxAK1OqGnq5JOIpVlyBVzwr55I53hm4HxImgCGLwPy3C4LtY">
               <div
-                class="absolute top-4 left-4 text-[9px] tracking-[0.3em] uppercase bg-[#070707]/80 backdrop-blur-md px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
-                LOTE 03
+                class="absolute inset-0 bg-gradient-to-t from-[#070707]/70 via-transparent to-transparent pointer-events-none">
               </div>
-              <div class="absolute bottom-4 right-4 text-[10px] tracking-[0.2em] font-serif italic text-[#F4F4F2]/80">
-                Lã Fria &amp; Corte Inglês
+              <!-- Badges -->
+              <div
+                class="absolute top-4 left-4 text-[9px] tracking-[0.25em] uppercase bg-[#070707]/90 px-2.5 py-1 text-[#F4F4F2] border border-[#222222]">
+                LOTE 03 • -68% OFF
+              </div>
+              <div
+                class="absolute top-4 right-4 text-[9px] tracking-[0.2em] uppercase bg-stone-900/90 text-stone-300 px-2.5 py-1 border border-stone-700 font-mono">
+                Esgotado em 35 min
+              </div>
+              <div class="absolute bottom-4 right-4 text-[11px] tracking-[0.15em] font-mono text-[#F4F4F2]/90">
+                R$ 380 <span class="line-through text-stone-500 text-[10px]">R$ 1.190</span>
               </div>
             </div>
             <div class="flex flex-col flex-grow justify-between">
               <div>
                 <span class="text-[11px] font-mono tracking-[0.25em] text-[#8E8E93] uppercase block mb-1">
-                  03. ACESSÓRIOS &amp; ESSENCIAIS
+                  03. ALFAIATARIA FORMAL
                 </span>
-                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-3">
-                  Corte Sob Medida & Peças Estruturadas
+                <h3 class="font-serif text-2xl text-[#F4F4F2] font-light mb-2">
+                  Colete Estruturado Lã Fria
                 </h3>
                 <p class="text-sm font-sans text-[#8E8E93] font-light leading-relaxed mb-4">
-                  Coletes de lã fria e camisaria refinada com caimento impecável. Presença sofisticada para ocasiões que
-                  exigem distinção.
+                  Corte inglês sob medida com acabamento manual. Peça rara de overstock de alfaiataria de alta costura
+                  europeia.
                 </p>
               </div>
               <div
-                class="pt-4 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.18em] uppercase">
-                <span class="">JAPÃO / SUÍÇA</span>
-                <span class="text-[#8E8E93] group-hover:text-[#F4F4F2] transition-colors">ALERTA INSTANTÂNEO →</span>
+                class="pt-3 hairline-t flex items-center justify-between text-[11px] text-[#666666] tracking-[0.15em] uppercase font-mono">
+                <span class="">LÃ FRIA SUPER 120'S</span>
+                <span class="text-[#8E8E93]">STATUS: CONCLUÍDO</span>
               </div>
             </div>
           </article>
         </div>
       </div>
     </section>
-    <!-- END: LookbookCurationSection -->
-    <!-- BEGIN: ConversionAndInvitationSection -->
-    <section class="relative py-28 sm:py-36 bg-[#050505]" data-purpose="conversion-section" id="convite">
-      <div class="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-14 text-center">
-        <!-- Metadata Header Tag -->
-        <div
-          class="inline-flex items-center space-x-3 text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-[#8E8E93] mb-8 border border-[#1C1C1C] px-4 py-1.5 bg-[#090909]">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#F4F4F2]"></span>
-          <span class="">CONVITE PRIVADO • TEMPORADA 2026</span>
+    <!-- END: AcervoPreviewSection -->
+    <!-- BEGIN: FAQSection (Para matar todas as objeções de tráfego) -->
+    <section class="hairline-b bg-[#0A0A0A] py-20 sm:py-28 relative" data-purpose="faq-section" id="faq">
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-14">
+        <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16 reveal-on-scroll is-revealed">
+          <span class="text-[10px] tracking-[0.35em] text-[#8E8E93] uppercase block mb-3 font-mono">[ DÚVIDAS FREQUENTES
+            ]</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-[#F4F4F2] font-light tracking-tight uppercase">
+            Tudo o que você precisa saber
+          </h2>
+          <p class="text-sm text-[#8E8E93] mt-3 font-light">
+            Transparência total antes de solicitar a sua vaga no grupo.
+          </p>
         </div>
-        <!-- High-Impact Serif Typography -->
+        <div class="space-y-4 max-w-3xl mx-auto reveal-on-scroll is-revealed">
+          <!-- FAQ 1 -->
+          <details class="group bg-[#070707] border border-[#1E1E1E] p-5 sm:p-6 transition-all duration-300">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-serif text-xl sm:text-2xl text-[#F4F4F2] font-normal">Quanto custa para
+                participar?</span>
+              <span class="faq-icon text-xl text-[#8E8E93] font-mono transition-transform duration-300">+</span>
+            </summary>
+            <div
+              class="pt-4 text-sm sm:text-base text-[#8E8E93] leading-relaxed font-light border-t border-[#1C1C1C] mt-4">
+              O acesso à comunidade VIP Society é <strong class="text-[#F4F4F2] font-medium">100% gratuito</strong>.
+              Você não paga nenhuma mensalidade ou taxa de adesão. Você só paga pelas peças que decidir comprar
+              diretamente nas lojas ou ateliês parceiros oficiais.
+            </div>
+          </details>
+          <!-- FAQ 2 -->
+          <details class="group bg-[#070707] border border-[#1E1E1E] p-5 sm:p-6 transition-all duration-300">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-serif text-xl sm:text-2xl text-[#F4F4F2] font-normal">As peças são realmente
+                originais?</span>
+              <span class="faq-icon text-xl text-[#8E8E93] font-mono transition-transform duration-300">+</span>
+            </summary>
+            <div
+              class="pt-4 text-sm sm:text-base text-[#8E8E93] leading-relaxed font-light border-t border-[#1C1C1C] mt-4">
+              <strong class="text-[#F4F4F2] font-medium">Sim, 100% autênticas.</strong> Não compactuamos com réplicas ou
+              contrafações. Todos os links direcionam para canais autorizados, ateliês independentes ou grandes
+              plataformas de luxo que emitem nota fiscal e garantia de autenticidade.
+            </div>
+          </details>
+          <!-- FAQ 3 -->
+          <details class="group bg-[#070707] border border-[#1E1E1E] p-5 sm:p-6 transition-all duration-300">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-serif text-xl sm:text-2xl text-[#F4F4F2] font-normal">Como são enviados os links e os
+                alertas?</span>
+              <span class="faq-icon text-xl text-[#8E8E93] font-mono transition-transform duration-300">+</span>
+            </summary>
+            <div
+              class="pt-4 text-sm sm:text-base text-[#8E8E93] leading-relaxed font-light border-t border-[#1C1C1C] mt-4">
+              As notificações chegam com ficha completa: imagem real, grade de tamanhos disponível, composição do
+              tecido, valor de etiqueta original vs. valor com desconto garimpado e o link oficial direto para a compra
+              imediata.
+            </div>
+          </details>
+          <!-- FAQ 4 -->
+          <details class="group bg-[#070707] border border-[#1E1E1E] p-5 sm:p-6 transition-all duration-300">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-serif text-xl sm:text-2xl text-[#F4F4F2] font-normal">O grupo vai ficar me mandando
+                mensagens o dia todo?</span>
+              <span class="faq-icon text-xl text-[#8E8E93] font-mono transition-transform duration-300">+</span>
+            </summary>
+            <div
+              class="pt-4 text-sm sm:text-base text-[#8E8E93] leading-relaxed font-light border-t border-[#1C1C1C] mt-4">
+              <strong class="text-[#F4F4F2] font-medium">Definitivamente não.</strong> Nossa rigorosa Política de
+              Silêncio limita a média de 2 a 4 envios qualificados por semana. Sem conversas paralelas, sem correntes,
+              sem barulho desnecessário na sua rotina.
+            </div>
+          </details>
+          <!-- FAQ 5 -->
+          <details class="group bg-[#070707] border border-[#1E1E1E] p-5 sm:p-6 transition-all duration-300">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-serif text-xl sm:text-2xl text-[#F4F4F2] font-normal">Como tiro dúvidas sobre caimento
+                ou tamanho?</span>
+              <span class="faq-icon text-xl text-[#8E8E93] font-mono transition-transform duration-300">+</span>
+            </summary>
+            <div
+              class="pt-4 text-sm sm:text-base text-[#8E8E93] leading-relaxed font-light border-t border-[#1C1C1C] mt-4">
+              Você tem canal privado 1-a-1 diretamente com nosso Concierge editorial. Basta clicar no suporte indicado
+              no grupo para receber direcionamento consultivo sobre medidas, caimento e combinações.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+    <!-- END: FAQSection -->
+    <!-- BEGIN: FinalConversionSection (Ultra Impacto & Escassez) -->
+    <section class="relative py-28 sm:py-36 bg-[#050505] overflow-hidden" data-purpose="conversion-section"
+      id="convite">
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04)_0%,transparent_70%)] pointer-events-none blur-3xl">
+      </div>
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-14 text-center relative z-10">
+        <!-- Metadata Tag -->
+        <div
+          class="inline-flex items-center space-x-3 text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-[#8E8E93] mb-8 border border-[#1C1C1C] px-4 py-1.5 bg-[#090909] reveal-on-scroll is-revealed">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#F4F4F2] status-pulse"></span>
+          <span class="">ACESSO PRIVADO • LOTE ATIVO</span>
+        </div>
+        <!-- Monumental Headline -->
         <h2
-          class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F4F4F2] font-light tracking-tight uppercase leading-[0.95] mb-8 max-w-4xl mx-auto">
-          Faça parte da sociedade.
+          class="headline-monumental font-serif text-[#F4F4F2] font-light uppercase tracking-tight mb-8 max-w-5xl mx-auto reveal-on-scroll is-revealed">
+          FAÇA PARTE DA SOCIEDADE.
         </h2>
         <!-- Explanatory Subtext -->
-        <p class="font-sans text-base sm:text-lg text-[#8E8E93] max-w-2xl mx-auto leading-relaxed font-light mb-12">
-          O acesso à comunidade é gratuito, mas o número de membros é restrito para manter a qualidade da curadoria e a
-          velocidade de resposta aos estoques.
+        <p
+          class="font-sans text-base sm:text-xl text-[#8E8E93] max-w-2xl mx-auto leading-relaxed font-light mb-12 reveal-on-scroll is-revealed">
+          As vagas para esta temporada são limitadas para garantir a velocidade de resposta aos estoques residuais e
+          manter a qualidade da curadoria.
         </p>
-        <!-- Final Luxury Conversion Button (Pure monochrome aesthetic) -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-10">
-          <a class="luxury-btn w-full bg-[#F4F4F2] text-[#070707] py-5 px-8 text-xs sm:text-sm uppercase tracking-[0.22em] font-medium rounded-[1px] text-center shadow-2xl block"
-            data-purpose="final-whatsapp-cta" href="https://chat.whatsapp.com/J9BH5DrBy1rLH736OMYR1g"
-            rel="noopener noreferrer" target="_blank">
-            GARANTIR MEU ACESSO NO WHATSAPP →
+        <!-- Botão CTA Principal -->
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto mb-10 reveal-on-scroll is-revealed">
+          <a class="luxury-btn group w-full bg-[#F4F4F2] text-[#070707] py-5 px-8 text-xs sm:text-sm uppercase tracking-[0.22em] font-medium rounded-[1px] text-center shadow-2xl block transition-all"
+            data-purpose="final-whatsapp-cta" href="https://chat.whatsapp.com/" rel="noopener noreferrer"
+            target="_blank">
+            <span class="inline-flex items-center justify-center gap-2">
+              <span class="">GARANTIR MEU ACESSO NO WHATSAPP</span>
+              <span class="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1.5">→</span>
+            </span>
           </a>
         </div>
-        <!-- Exclusivity Verification Badges -->
+        <!-- Indicadores de Confiança -->
         <div
-          class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-[10px] sm:text-[11px] tracking-[0.25em] text-[#666666] uppercase font-mono">
-          <span class="">[ GRUPO VERIFICADO ]</span>
+          class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-[10px] sm:text-[11px] tracking-[0.25em] text-[#8E8E93] uppercase font-mono reveal-on-scroll is-revealed">
+          <span class="">[ LINK DIRETO ]</span>
           <span class="hidden sm:inline text-[#2A2A2A]">•</span>
-          <span class="">[ CONVITE PESSOAL E INTRANSFERÍVEL ]</span>
+          <span class="">[ ENTRADA IMEDIATA ]</span>
           <span class="hidden sm:inline text-[#2A2A2A]">•</span>
           <span class="">[ AMBIENTE SILENCIOSO ]</span>
         </div>
       </div>
     </section>
-    <!-- END: ConversionAndInvitationSection -->
+    <!-- END: FinalConversionSection -->
   </main>
   <!-- END: MainContent -->
   <!-- BEGIN: MainFooter -->
-  <footer class="hairline-t bg-[#050505] text-[#8E8E93]" data-purpose="site-footer">
-    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 py-12 sm:py-16">
-      <!-- Top Grid in Footer -->
+  <footer class="hairline-t bg-[#050505] text-[#8E8E93] relative z-10" data-purpose="site-footer">
+    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 py-14 sm:py-18">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 hairline-b text-xs">
         <!-- Col 01: Brand -->
         <div class="md:col-span-1">
-          <div class="font-serif text-lg tracking-[0.25em] text-[#F4F4F2] uppercase mb-3">VIP SOCIETY</div>
+          <div class="font-serif text-xl tracking-[0.25em] text-[#F4F4F2] uppercase mb-3">VIP SOCIETY</div>
           <p class="text-[#666666] leading-relaxed text-xs font-light">
-            Plataforma editorial fechada de garimpo e direcionamento estético de alta costura, pronto-a-vestir e design.
+            Plataforma editorial fechada de garimpo e direcionamento estético de alta costura, pronto-a-vestir e
+            alfaiataria autoral.
           </p>
         </div>
-        <!-- Col 02: Diretrizes -->
+        <!-- Col 02: Diretrizes Rápidas -->
         <div>
           <span class="text-[10px] tracking-[0.3em] uppercase text-[#F4F4F2] block mb-4 font-mono">DIRETRIZES</span>
-          <ul class="space-y-2 text-[#8E8E93]">
-            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="manifesto-de-qualidade.html">Manifesto de Qualidade</a></li>
-            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="politica-de-silencio.html">Política de Silêncio</a></li>
-            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Critérios de Curadoria</a></li>
+          <ul class="space-y-2.5 text-[#8E8E93]">
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#qualidade">Manifesto de Qualidade</a>
+            </li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#silencio">Política de Silêncio</a>
+            </li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#como-funciona">Processo de
+                Curadoria</a></li>
           </ul>
         </div>
         <!-- Col 03: Canais -->
         <div>
-          <span class="text-[10px] tracking-[0.3em] uppercase text-[#F4F4F2] block mb-4 font-mono">CANAIS
-            PRIVADOS</span>
-          <ul class="space-y-2 text-[#8E8E93]">
-            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#convite">WhatsApp Curated Feed</a>
-            </li>
-            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Edições Impressas (Em breve)</a>
-            </li>
-            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#">Concierge Editorial</a></li>
+          <span class="text-[10px] tracking-[0.3em] uppercase text-[#F4F4F2] block mb-4 font-mono">CANAL PRIVADO</span>
+          <ul class="space-y-2.5 text-[#8E8E93]">
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="https://chat.whatsapp.com/"
+                rel="noopener noreferrer" target="_blank">Acesso no WhatsApp →</a></li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#acervo">Acervo Recente</a></li>
+            <li class=""><a class="hover:text-[#F4F4F2] transition-colors" href="#faq">Central de Perguntas</a></li>
           </ul>
         </div>
-        <!-- Col 04: Localização & Época -->
+        <!-- Col 04: Escritórios & Edição -->
         <div>
-          <span class="text-[10px] tracking-[0.3em] uppercase text-[#F4F4F2] block mb-4 font-mono">ESCRITÓRIOS</span>
-          <p class="text-[#666666] leading-relaxed">
-            Acervo Digital • Circulação Global<br>
-            Edição Ativa: 2026/01
-          </p>
+
+
         </div>
       </div>
-      <!-- Bottom Bar -->
+      <!-- Bottom Legal Bar -->
       <div
-        class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#555555] tracking-[0.15em] uppercase font-light">
-        <p class="">© 2026 VIP Society. Todos os direitos reservados. Curadoria independente.</p>
-        <div class="flex space-x-6 mt-4 sm:mt-0 text-[10px] tracking-[0.2em]">
-          <span class="">PRIVACIDADE</span>
-          <span class="">TERMOS</span>
-          <span class="">ACESSO RESTRITO</span>
+        class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#555555] tracking-[0.15em] uppercase font-light gap-4">
+        <p class="">© 2026 VIP SOCIETY. Todos os direitos reservados. Curadoria independente de moda de luxo.</p>
+        <div class="flex space-x-6 text-[10px] tracking-[0.2em]">
+          <a class="hover:text-stone-300 transition-colors" href="#qualidade">TERMOS DE USO</a>
+          <a class="hover:text-stone-300 transition-colors" href="#silencio">POLÍTICA DE PRIVACIDADE</a>
+          <a class="hover:text-stone-300 transition-colors" href="#silencio">CÓDIGO DE SILÊNCIO</a>
         </div>
       </div>
     </div>
@@ -570,33 +955,50 @@
   <!-- END: MainFooter -->
   <!-- BEGIN: InteractiveScripts -->
   <script data-purpose="subtle-interactions">
-    // Smooth interaction when clicking on internal hash anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId && targetId !== '#') {
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            e.preventDefault();
-            targetElement.scrollIntoView({
-              behavior: 'smooth'
-            });
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Smooth scroll em âncoras locais
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              e.preventDefault();
+              targetElement.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }
           }
-        }
+        });
       });
+
+      // 2. Scroll Reveal com IntersectionObserver
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+      } else {
+        revealElements.forEach(el => el.classList.add('is-revealed'));
+      }
     });
   </script>
   <!-- END: InteractiveScripts -->
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
